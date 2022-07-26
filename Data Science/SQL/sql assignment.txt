@@ -1,0 +1,16 @@
+
+
+1)select customerId,FirstName,LastName from customers where FirstName like 'N%' OR city like 'Oslo';
+2)select TrackId,Name,Composer,UnitPrice from tracks where UnitPrice between 0.92 and 1 AND Composer NOT like '%T%';
+
+
+3)select InvoiceDate,sum(Total),avg(Total) from invoices where InvoiceDate between '2012-06-01' and '2012-06-30' group by InvoiceDate;
+
+4)select TrackId,sum(Quantity) as total_quantity from invoice_items group by TrackId order by total_quantity desc;
+
+5)select ArtistId,Name from artists where ArtistId not in(
+select A.ArtistId from artists as A INNER JOIN albums B on A.ArtistId =B.ArtistId inner join tracks as C ON B.AlbumId =C.AlbumId inner join playlist_track as D on C.TrackId=D.TrackId ) ;
+
+6)select A.AlbumId ,count(C.PlaylistId)as T  from  albums A inner join tracks as B ON A.AlbumId =B.AlbumId inner join playlist_track as C on B.TrackId=C.TrackId group by A.AlbumId  HAVING T>10;
+
+
